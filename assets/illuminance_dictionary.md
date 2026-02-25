@@ -1,0 +1,33 @@
+# Solar illuminance
+
+The [NASA Prediction of Worldwide Energy Resources (POWER) project](https://power.larc.nasa.gov/){target="_blank" rel="noopener noreferrer"} "provides solar and meteorological data sets from NASA research for support of renewable energy, building energy efficiency and agricultural needs."
+
+This project uses meteorological data retrieved from NASA POWER using the [nasapower package](https://ropensci.github.io/nasapower/articles/nasapower.html).
+
+### Data dictionary
+
+|variable              |class     |description |
+|:---------------------|:---------|:-----------|
+|`lon`                 |numeric   |Longitude   |
+|`lat`                 |numeric   |Latitude    |
+|`year`                |numeric   |Year        |
+|`mm`                  |numeric   |Month       |
+|`dd`                  |numeric   |Day of month|
+|`doy`                 |numeric   |Day of year |
+|`global_illuminance`  |numeric   |The average total amount of direct and diffuse illuminance on a horizontal plane (measured in lux).|
+|`direct_illuminance`  |numeric   |The average amount of illuminance received from the sky (excluding the solar disk) on a horizontal plane (_sic_).|
+|`diffuse_illuminance` |numeric   |The average amount of illuminance received directly from the solar disk on a surface perpendicular to the suns rays (_sic_).|
+|`ps`                  |numeric   |The average of surface pressure at the surface of the earth.|
+|`snodp`               |numeric   |The snow depth on land at surface of the earth (cm).|
+|`t2m`                 |numeric   |The average air (dry bulb) temperature at 2 meters above the surface of the earth.|
+|`t2m_max`             |numeric   |The maximum hourly air (dry bulb) temperature at 2 meters above the surface of the earth in the period of interest.|
+|`t2m_min`             |numeric   |The minimum hourly air (dry bulb) temperature at 2 meters above the surface of the earth in the period of interest.|
+|`ts`                  |numeric   |The average temperature at the earth's surface.|
+|`t2mdew`              |numeric   |The dew/frost point temperature at 2 meters above the surface of the earth.|
+|`ws2m`                |numeric   |The average of wind speed at 2 meters above the surface of the earth.|
+|`wd2m`                |numeric   |The average of the wind direction at 2 meters above the surface of the earth.|
+|`allsky_sfc_uv_index` |numeric   |The ultraviolet radiation exposure index.|
+|`allsky_srf_alb`      |numeric   |The all sky rate of reflectivity of the earth's surface; the ratio of the solar energy reflected by the surface of the earth compared to the total solar energy incident reaching the surface of the earth.|
+|`aod_55`              |numeric   |The optical thickness at 0.55 um measured vertically; the component of the atmosphere to quantify the removal of radiant energy from an incident beam.|
+|`aod_84`              |numeric   |The optical thickness at 0.84 um measured vertically; the component of the atmosphere to quantify the removal of radiant energy from an incident beam.|
+|`clrsky_kt`           |numeric   |A fraction representing clearness of the atmosphere; the clear sky insolation that is transmitted through the atmosphere to strike the surface of the earth divided by the average of top of the atmosphere total solar irradiance incident.|

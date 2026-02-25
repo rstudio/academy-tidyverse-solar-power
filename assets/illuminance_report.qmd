@@ -1,0 +1,145 @@
+---
+title: "Atmospheric Effects on Solar Energy Potential"
+author: "Your name"
+date: today
+format:
+  html:
+    theme: flatly
+embed-resources: true
+toc: true
+df-print: paged
+---
+
+```{r}
+#| label: setup
+#| include: false
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
+
+library(tidyverse)
+
+illuminance <- read_csv("../data/illuminance.csv")
+precip <- read_csv("../data/precip.csv")
+
+solar <-
+  illuminance |> 
+  rename(
+    global_lux = global_illuminance,
+    diffuse_lux = diffuse_illuminance,
+    direct_lux = direct_illuminance,
+    pressure = ps,
+    temp = t2m,
+    temp_min = t2m_min,
+    temp_max = t2m_max,
+    dew_point = t2mdew,
+    snow = snodp,
+    wind_speed = ws2m,
+    wind_direction = wd2m,
+    uv_index = allsky_sfc_uv_index,
+    albedo = allsky_srf_alb,
+    optical_depth_55 = aod_55,
+    optical_depth_84 = aod_84,
+    clearness = clrsky_kt
+  ) |> 
+  mutate(
+    flat_lux = global_lux - diffuse_lux,
+    gain = direct_lux - flat_lux,
+    .after = diffuse_lux
+  ) |> 
+  left_join(precip, by = c("lat", "lon", "year", "mm", "dd", "doy")) |> 
+  rename(
+    precip = prectotcorr,
+    humidity_specific = qv2m,
+    humidity_relative = rh2m,
+    cloud_depth = cloud_od,
+    water = pw
+  ) |> 
+  select(-c(lon, lat))
+```
+
+# Background
+
+The solar energy that we collect on the surface of the Earth is modulated both by the daily and seasonal movement of the Earth relative to the sun, which can be easily modeled, and by atmospheric conditions, which are in constant flux. Although we can predict to some extent the atmospheric conditions that a location will be exposed to, we may not understand how these conditions relate to solar energy collection. **Can we model the relationship between measurable atmospheric conditions and solar potential?**
+
+This report presents evidence that the amount of *cloud cover* in the sky modulates the amount of solar illuminance received on the Earth's surface in a complex way. Solar illuminance, measured in lux, is the amount of sunlight, measured in lumens, that falls on one square meter of solar panel. As cloud cover increases:
+
+* Illuminance obtained directly from the sun decreases, but 
+* Background illuminance obtained from light scattered, or diffused, through the atmosphere _increases_ until cloud cover becomes sufficiently dense to block even scattered sunlight
+
+# Data
+
+This report uses data obtained from the [NASA Prediction of Worldwide Energy Resources (POWER) project](https://power.larc.nasa.gov/), which "provides solar and meteorological data sets from NASA research for support of renewable energy, building energy efficiency and agricultural needs." All data was collected at a single location located at `r illuminance$lat[1]` latitude and `r illuminance$lon[1]` longitude.
+
+For a complete description of variables in the dataset, consult this [data dictionary](https://rsacdn.link/milestones/internal/solar-power/assets/illuminance_dictionary.html)
+
+```{r}
+#| label: data
+solar
+```
+
+In particular, we're interested in how global illuminance, measured as `global_lux`, changes due to cloud conditions. Global illuminance is the combined direct and diffuse illuminance that falls on a solar panel laid flat on the ground.
+
+# Results
+
+Global illuminance fluctuates throughout the year in a stable trend related to the revolution of the Earth around the sun. As the Earth revolves, any single position on the Earth becomes closer or further to the sun due to the tilt of the Earth's axis. This change in distance, as well as the related change in the angle from which sunlight falls on the location, creates a predictable seasonal change in global illuminance.
+
+```{r}
+#| echo: false
+solar |> 
+  ggplot(aes(x = doy, y = global_lux, group = year, color = year)) +
+    geom_smooth(se = FALSE) +
+    labs(
+      title = "Seasonal trends in global illuminance",
+      subtitle = "Each year in our data set exhibits the same general trend.",
+      y = "Global illuminance",
+      x = "Day of year"
+    )
+```
+
+However, global illuminance fluctuates greatly around this trend from day to day. Can atmospheric conditions explain some of this variation?
+
+```{r}
+#| echo: false
+solar |> 
+  filter(year == 2013) |> 
+  ggplot(aes(x = doy, y = global_lux)) +
+    geom_point() +
+    geom_smooth() +
+    labs(
+      title = "Daily global illuminance in 2013",
+      y = "Global illuminance",
+      x = "Day of year"
+    )
+```
+
+A cursory investigation suggests yes. The amount of cloud cover in the sky is strongly associated with changes in each of the two components of global illuminance.
+
+As cloud cover increases, direct illuminance received from the sun decreases.
+
+```{r}
+#| echo: false
+solar |> 
+  ggplot(aes(x = cloud_amt, y = direct_lux)) +
+  geom_point() + 
+  geom_smooth() +
+  labs(
+    title = "Direct illumination vs cloud cover",
+    x = "Percent of sky occluded by clouds",
+    y = "Direct illuminance"
+  )
+```
+
+However, as cloud cover increases, the amount of background illuminance received from the sky increases, to a point, and then decreases.
+
+```{r}
+#| echo: false
+solar |> 
+  ggplot(aes(x = cloud_amt, y = diffuse_lux)) +
+  geom_point() + 
+  geom_smooth() +
+  labs(
+    title = "Diffuse illumination vs cloud cover",
+    x = "Percent of sky occluded by clouds",
+    y = "Diffuse illuminance"
+  )
+```
+

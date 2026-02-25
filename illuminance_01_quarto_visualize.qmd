@@ -1,0 +1,110 @@
+---
+title: "Import and visualize"
+format: html
+---
+
+# Instructions
+
+Welcome to your first project milestone! In this project, you will use the **tidyverse** to investigate real data related to solar power potential.
+
+The solar energy that we can collect on the surface of the Earth is modulated by atmospheric conditions, which are in constant flux. Although we can predict to some extent the atmospheric conditions that a location will be exposed to, we may not understand how these conditions relate to solar energy collection. By the end of this project, we'd like to model the relationship between measurable atmospheric conditions and solar potential. We will split our work into milestones that build on each other to iteratively explore the data.
+
+## How to complete a milestone
+
+Each milestone will require you to read and edit a Quarto document, like this one. **To learn how to use Quarto in Positron and RStudio, see here: https://quarto.org/docs/get-started/hello/positron.html.**
+
+For each milestone, you will need to:
+
+1. **Recreate a result,** like a plot, table, or model. This will require you to use the skills you have studied that week.
+
+2. **Extend the result.** Explore a new question about the data--this will provide an opportunity to both apply the skills you learned that week and to teach yourself something new. We will provide suggestions each week, but you are encouraged to explore any aspect of the data that interests you. Alternatively, apply and extend the skills you learned that week by working with your own data. Remember, being able to teach yourself new parts of a computer language is what will make you a truly competent open source programmer---and we are here to help.
+
+You'll share your extension with your groupmates at the weekly meeting, and show them how they could do the same.
+
+## The `illuminance` data set
+
+The data comes from the NASA Prediction of Worldwide Energy Resources (POWER) project: https://power.larc.nasa.gov/, which "provides solar and meteorological data sets from NASA research for support of renewable energy, building energy efficiency and agricultural needs."
+
+To learn more about the variables contained in the data set, refer to the data dictionary: https://rsacdn.link/milestones/internal/v2/tidyverse/solar-power/assets/illuminance_dictionary.html
+
+# Milestone
+
+```{r}
+#| label: setup
+#| include: false
+library(tidyverse)
+```
+
+## R Basics
+
+In this milestone, you'll become familiar with the `illuminance` data set.
+
+## Recreation
+
+### Part 1 - Import
+
+In the code chunk below, use a command **from the readr package** to read in the data set.
+
+* The data set lives in the file `illuminance.csv`, which is stored in the `data/` folder in your working directory.
+* Save the data set as an object named `illuminance`.
+
+_Note_: Both `read_csv()` and `read.csv()` read data from a CSV file, but they differ slightly in _how_ they read in data. Make sure you use the tool from the readr package. (Not sure which is which? Check the help documentation.)
+
+```{r}
+#| label: recreation-import
+
+```
+
+### Part 2 - Explore
+
+Use R to inspect the contents of `illuminance`:
+
+- Display the contents of `illuminance`
+- Use `nrow()` to find the number of observations in `illuminance`
+- Use `mean()` to find the average value of `global_illuminance`
+- Use `max()` to find the maximum value of `global_illuminance`
+- Use `summary()` to generate a summary of the data set
+
+*Hint:* you may want to look up the help pages for each of these functions.
+
+Write your code in the following chunk:
+
+```{r}
+#| label: recreation
+
+```
+
+### Part 3 - Visualize
+
+Using the File Explorer, navigate to the `images/` directory, then click on `milestone01.png` to open an image.
+
+You should see a plot presenting observations from **2013**. Your task is to recreate this plot.
+
+Use `ggplot()` in the chunk below to re-create the plot above. **Note** Before plotting, you will first need to filter your data set to only include observations from 2013.
+
+```{r}
+#| label: recreation-visualize
+
+```
+
+## Extension
+
+Using the code chunk below, investigate a research question about this data, using the visualization skills you learned this week.
+
+Some ideas (we encourage you to choose one):
+
+1. Your recreation focused on the global illuminance in 2013. Pick a different year to visualize -- do you see similar patterns in global illuminance across that year?
+2. Do you see similar patterns across years? Does this answer change if you look at only high (or low) values of `global_illuminance`?
+3. Within a year of interest, what patterns do you see (if any) between `global_illuminance` and other variables over time?
+4. [any other research question of interest]
+
+Alternately, working with a data set of your own, complete the following:
+
+1. Read in your data
+2. Filter your data using a logical test/condition
+3. Graph this data subset using at least one geom
+
+```{r}
+#| label: extension
+
+```
