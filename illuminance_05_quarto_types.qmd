@@ -113,7 +113,7 @@ Run the following code chunk to test whether you have the same answer as the sol
 ```{r}
 #| label: compare
 #| eval: false
-waldo::compare(solar_dates, solution, tolerance = 1e-4, ignore_attr = c("class", "groups"))
+waldo::compare(solar_dates, solution, tolerance = 1e-4, ignore_attr = TRUE)
 ```
 
 ## Part 3 - The role of factor orders in visualizations
