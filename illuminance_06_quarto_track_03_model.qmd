@@ -11,7 +11,7 @@ For this final milestone, apply what you have learned about data transformation 
 2. Wrangle your data so it is in a format that is ready for modeling
 3. Create a simple regression model and inspect your model results using functions from the broom package
 
-To learn more about the variables contained in the data set(s), refer to the data dictionaries: https://rsacdn.link/milestones/internal/v2/tidyverse/solar-power/assets/illuminance_dictionary.html and https://rsacdn.link/milestones/internal/v2/tidyverse/solar-power/assets/precip_dictionary.html
+To learn more about the variables contained in the data set(s), refer to the data dictionaries: https://rstudio.github.io/academy-tidyverse-solar-power/assets/illuminance_dictionary.html and https://rstudio.github.io/academy-tidyverse-solar-power/assets/precip_dictionary.html
 
 # Milestone
 

@@ -9,7 +9,7 @@ This week, you worked with three new data types in R -- factors, strings, and da
 
 In this milestone, you'll use the date-time information in our data to plot the average precipitation by season.
 
-To learn more about the variables contained in the data set(s), refer to the data dictionaries: https://rsacdn.link/milestones/internal/v2/tidyverse/solar-power/assets/illuminance_dictionary.html and https://rsacdn.link/milestones/internal/v2/tidyverse/solar-power/assets/precip_dictionary.html
+To learn more about the variables contained in the data set(s), refer to the data dictionaries: https://rstudio.github.io/academy-tidyverse-solar-power/assets/illuminance_dictionary.html and https://rstudio.github.io/academy-tidyverse-solar-power/assets/precip_dictionary.html
 
 # Milestone
 

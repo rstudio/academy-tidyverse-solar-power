@@ -69,7 +69,7 @@ This report presents evidence that the amount of *cloud cover* in the sky modula
 
 This report uses data obtained from the [NASA Prediction of Worldwide Energy Resources (POWER) project](https://power.larc.nasa.gov/), which "provides solar and meteorological data sets from NASA research for support of renewable energy, building energy efficiency and agricultural needs." All data was collected at a single location located at `r illuminance$lat[1]` latitude and `r illuminance$lon[1]` longitude.
 
-For a complete description of variables in the dataset, consult this [data dictionary](https://rsacdn.link/milestones/internal/solar-power/assets/illuminance_dictionary.html)
+For a complete description of variables in the dataset, consult this [data dictionary](https://rstudio.github.io/academy-tidyverse-solar-power/assets/illuminance_dictionary.html)
 
 ```{r}
 #| label: data
