@@ -1,3 +1,10 @@
+---
+title: Solar Illuminance Data Dictionary
+format:
+  html:
+    embed-resources: true
+---
+
 # Solar illuminance
 
 The [NASA Prediction of Worldwide Energy Resources (POWER) project](https://power.larc.nasa.gov/){target="_blank" rel="noopener noreferrer"} "provides solar and meteorological data sets from NASA research for support of renewable energy, building energy efficiency and agricultural needs."

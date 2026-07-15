@@ -1,3 +1,10 @@
+---
+title: Precipitation Data Dictionary
+format:
+  html:
+    embed-resources: true
+---
+
 ## Precipitation
 
 ### Data Dictionary
