@@ -9,11 +9,9 @@ This week you learned about tidying and joining data sets with the tidyr (pronou
 
 Joining data sets can be deceptively tricky. It is important to keep in mind that prepping and inspecting the tables you're working with *before* you do a join is often more important (and takes more time) than doing the join itself.
 
-You'll use some of these skills in the milestone to the right.
+You'll use some of these skills in the milestone below.
 
 To learn more about the variables contained in the data set(s), refer to the data dictionaries: https://rstudio.github.io/academy-tidyverse-solar-power/assets/illuminance_dictionary.html and https://rstudio.github.io/academy-tidyverse-solar-power/assets/precip_dictionary.html
-
-Remember that all tidyverse packages have already been installed for you but you will need to *load* the ones you want to use.
 
 # Milestone
 

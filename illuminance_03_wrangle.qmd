@@ -106,7 +106,7 @@ Your task is to use what you've learned about the dplyr package to transform `so
 
 Work in the code chunk below. Save the result as `gains`. We will use `gains` in Part 3.
 
-*Hint*: Pay attention to the position of these new variables in the solution table -- they immediately follow the `global_lux` and `direct_lux` columns.
+*Hint*: Pay attention to the position of these new variables in the solution table -- they immediately follow the `diffuse_lux` column.
 
 ```{r}
 #| label: recreation-create-b

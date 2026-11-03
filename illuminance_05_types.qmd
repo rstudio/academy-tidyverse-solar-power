@@ -16,6 +16,9 @@ To learn more about the variables contained in the data set(s), refer to the dat
 ```{r}
 #| label: setup
 #| include: false
+
+# Load your packages here
+
 ```
 
 ## Data types
@@ -83,7 +86,10 @@ Run the code below to see a table.
 ```{r}
 #| label: recreate-this-1
 #| message: false
-solution <- readr::read_csv("data/milestone05.csv")
+solution <- readr::read_csv(
+  "data/milestone05.csv",
+  col_types = readr::cols(month = readr::col_factor(levels = month.abb, ordered = TRUE))
+)
 solution
 ```
 
@@ -100,6 +106,7 @@ Your task is to use what you've learned about the lubridate package to transform
     +  Quarter 4 = "Fall"
 
 5. Add your new variables before the `doy` column of `solar`
+6. Remove `year`, `mm` and `dd`, which `date` replaces (see the `.keep` argument of `mutate()`)
 
 Work in the code chunk below. Save the result as `solar_dates`; we will use it in Part 3.
 
@@ -113,10 +120,10 @@ Run the following code chunk to test whether you have the same answer as the sol
 ```{r}
 #| label: compare
 #| eval: false
-waldo::compare(solar_dates, solution, tolerance = 1e-4, ignore_attr = TRUE)
+waldo::compare(solar_dates, solution, tolerance = 1e-4, ignore_attr = c("class", "groups"))
 ```
 
-## Part 3 - The role of factor orders in visualizations
+### Part 3 - The role of factor orders in visualizations
 
 Now that you have a `season` variable, you can compute and visualize summaries for each season. Run the chunk below to view a summary table.
 

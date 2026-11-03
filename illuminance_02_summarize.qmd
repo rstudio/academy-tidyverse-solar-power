@@ -115,7 +115,7 @@ Using the code chunk below, investigate a research question about this data, usi
 Alternately, working with a data set of your own, complete the following:
 
 1. Read in your data
-2. Use `group_by()` and `summarize()` to produce simple a table from some subset of your data
+2. Use `group_by()` and `summarize()` to produce a simple table from some subset of your data
 3. Create a related graph of this data subset using ggplot
 
 ```{r}
